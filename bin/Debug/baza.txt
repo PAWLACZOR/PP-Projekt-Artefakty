@@ -1,0 +1,2 @@
+Zloty_Gral;Ziemia;Ludzie;2;1930;Zabezpieczony
+Sygnet_Mocy;Mars;Nieznana;8;2055;Aktywny
