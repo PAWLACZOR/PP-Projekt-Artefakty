@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1768507505 source:d:\programowanie\pp-projekt-artefakty\artefakty.c
+1769069397 source:d:\programowanie\pp-projekt-artefakty\artefakty.c
+	"artefakty.h"
+
+1769069403 d:\programowanie\pp-projekt-artefakty\artefakty.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	"artefakty.h"
 
-1768507506 d:\programowanie\pp-projekt-artefakty\artefakty.h
-
-1768507494 source:d:\programowanie\pp-projekt-artefakty\main.c
+1769069376 source:d:\programowanie\pp-projekt-artefakty\main.c
 	<stdio.h>
 	<stdlib.h>
 	"artefakty.h"

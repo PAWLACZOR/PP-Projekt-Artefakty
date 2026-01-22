@@ -1,41 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "artefakty.h"
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        printf("Uzycie: %s nazwa_pliku.txt\n", argv[0]);
+        printf("Uruchomienie: %s <plik.txt>\n", argv[0]);
         return 1;
     }
 
-    char *nazwaPliku = argv[1];
-    Artefakt *archiwum = wczytajZPliku(nazwaPliku);
+    Artefakt *archiwum = wczytajZPliku(argv[1]);
     int wybor;
-    char bufor[MAX_NAME];
+    char nazwaBuf[MAX_NAME];
 
     do {
-        printf("\n--- GALAKTYCZNE ARCHIWUM ARTEFAKTOW ---\n");
-        printf("1. Wyswietl wszystkie\n");
-        printf("2. Dodaj nowy artefakt\n");
-        printf("3. Usun artefakt\n");
-        printf("4. Zapisz i wyjdz\n");
-        printf("Wybor: ");
-
-        if (scanf("%d", &wybor) != 1) {
-            while(getchar() != '\n'); continue;
-        }
+        printf("\n--- GALAKTYCZNE ARCHIWUM v3.0 ---\n");
+        printf("1. Lista | 2. Dodaj | 3. Usun | 4. Szukaj | 5. Sortuj | 6. Wyjdz\n Wybor: ");
+        if (scanf("%d", &wybor) != 1) { while(getchar() != '\n'); continue; }
 
         switch (wybor) {
             case 1: wyswietlListe(archiwum); break;
             case 2: archiwum = dodajArtefakt(archiwum); break;
-            case 3:
-                printf("Podaj nazwe do usuniecia: "); scanf("%s", bufor);
-                archiwum = usunArtefakt(archiwum, bufor);
-                break;
-            case 4: zapiszDoPliku(nazwaPliku, archiwum); break;
+            case 3: printf("Podaj nazwe: "); scanf("%s", nazwaBuf); archiwum = usunArtefakt(archiwum, nazwaBuf); break;
+            case 4: wyszukajArtefakt(archiwum); break;
+            case 5: printf("Sortuj wg: 1. Nazwy, 2. Mocy: "); int s; scanf("%d", &s); archiwum = sortujListe(archiwum, s); break;
+            case 6: zapiszDoPliku(argv[1], archiwum); break;
         }
-    } while (wybor != 4);
+    } while (wybor != 6);
 
     zwolnijPamiec(archiwum);
     return 0;
